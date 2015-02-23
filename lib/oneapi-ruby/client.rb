@@ -182,6 +182,10 @@ module OneApi
                 'senderName' => "tel:#{sms.sender_address}"
             }
 
+            if sms.message.mb_chars.length > 140
+              params["type"] = "longSMS"
+            end
+
             if sms.notify_url
                 params['notifyURL'] = sms.notify_url
             end
